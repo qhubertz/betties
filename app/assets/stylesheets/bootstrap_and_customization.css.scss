@@ -1,9 +1,22 @@
-$body-bg: #ecf0f1;
-$navbar-default-bg: #34495e;
-$navbar-default-link-color: white;
-$brand-primary: #e74c3c;
-$jumbotron-bg: #3498db;
-$jumbotron-heading-color: white;
-$jumbotron-color: white;
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+$body-bg: 					#ecf0f1;
+$navbar-default-bg: 		white;
+$navbar-height:				50px;
+$font-family-sans-serif:    'Lobster', cursive, Helvetica;
+$font-size:					30px;
+$navbar-default-link-color: #34495e;
+$brand-primary: 			#e74c3c;
+$jumbotron-bg: 				white;
+$jumbotron-heading-color: 	#16a085;
+$jumbotron-color: 			#34495e;
 
 @import 'bootstrap';
+
+.center {
+     text-align: center;
+}
+
+.navbar-brand {
+     font-weight: bold;
+}
