@@ -1,64 +1,41 @@
 class BettiesController < ApplicationController
   before_action :set_betty, only: [:show, :edit, :update, :destroy]
 
-  # GET /betties
-  # GET /betties.json
   def index
     @betties = Betty.all
   end
 
-  # GET /betties/1
-  # GET /betties/1.json
   def show
   end
 
-  # GET /betties/new
   def new
     @betty = Betty.new
   end
 
-  # GET /betties/1/edit
   def edit
   end
 
-  # POST /betties
-  # POST /betties.json
   def create
     @betty = Betty.new(betty_params)
 
-    respond_to do |format|
-      if @betty.save
-        format.html { redirect_to @betty, notice: 'Betty was successfully created.' }
-        format.json { render :show, status: :created, location: @betty }
-      else
-        format.html { render :new }
-        format.json { render json: @betty.errors, status: :unprocessable_entity }
-      end
+    if @betty.save
+     redirect_to @betty, notice: 'Betty was successfully created.'
+    else
+     render action: 'new' 
     end
   end
 
-  # PATCH/PUT /betties/1
-  # PATCH/PUT /betties/1.json
   def update
-    respond_to do |format|
-      if @betty.update(betty_params)
-        format.html { redirect_to @betty, notice: 'Betty was successfully updated.' }
-        format.json { render :show, status: :ok, location: @betty }
-      else
-        format.html { render :edit }
-        format.json { render json: @betty.errors, status: :unprocessable_entity }
-      end
+    if @betty.update(betty_params)
+      redirect_to @betty, notice: 'Betty was successfully updated.'
+    else
+     render action: 'edit'
     end
   end
 
-  # DELETE /betties/1
-  # DELETE /betties/1.json
   def destroy
     @betty.destroy
-    respond_to do |format|
-      format.html { redirect_to betties_url, notice: 'Betty was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to betties_url
   end
 
   private
