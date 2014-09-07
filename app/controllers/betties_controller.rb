@@ -1,5 +1,7 @@
 class BettiesController < ApplicationController
   before_action :set_betty, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
 
   def index
     @betties = Betty.all
@@ -9,14 +11,14 @@ class BettiesController < ApplicationController
   end
 
   def new
-    @betty = Betty.new
+    @betty = current_user.betties.build
   end
 
   def edit
   end
 
   def create
-    @betty = Betty.new(betty_params)
+    @betty = current_user.betties.build(betty_params)
 
     if @betty.save
      redirect_to @betty, notice: 'Betty was successfully created.'
@@ -42,6 +44,11 @@ class BettiesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_betty
       @betty = Betty.find(params[:id])
+    end
+
+    def correct_user
+      @betty = current_user.betties.find_by(id: params[:id])
+      redirect_to betties_path, notice: "You can look, but you can't touch this betty" if @betty.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
