@@ -21,7 +21,7 @@ class BettiesController < ApplicationController
     @betty = current_user.betties.build(betty_params)
 
     if @betty.save
-     redirect_to @betty, notice: 'Betty was successfully created.'
+     redirect_to @betty, notice: 'Betties on.'
     else
      render action: 'new' 
     end
@@ -29,7 +29,7 @@ class BettiesController < ApplicationController
 
   def update
     if @betty.update(betty_params)
-      redirect_to @betty, notice: 'Betty was successfully updated.'
+      redirect_to @betty, notice: 'Betty was edited. Seems sketchy.'
     else
      render action: 'edit'
     end
@@ -53,6 +53,6 @@ class BettiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def betty_params
-      params.require(:betty).permit(:description)
+      params.require(:betty).permit(:description, :image)
     end
 end
