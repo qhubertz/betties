@@ -1,14 +1,15 @@
 <div id="betties" class="transitions-enabled">
   <% @betties.each do |betty| %>
     <div class="box panel panel-default" >
-      <%= image_tag betty.image.url(:medium) %>
+      <%= link_to image_tag(betty.image.url(:medium)), betty %>
       <div class="panel-body">
-        <%= betty.description %>
-        <%= betty.user.email if betty.user %>
-        <%= link_to 'Show', betty %>
+        <p><%= betty.description %><p/>
+        <p><strong><%= betty.user.email if betty.user %></strong></p>
         <% if betty.user == current_user %>
-          <%= link_to 'Edit', edit_betty_path(betty) %>
-          <%= link_to 'Destroy', betty, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <div class="actions">
+            <%= link_to 'Edit', edit_betty_path(betty) %>
+            <%= link_to 'Destroy', betty, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
         <% end %>
       </div> 
     </div>

@@ -1,11 +1,19 @@
-<%= image_tag @betty.image.url %>
-
-<p>
-  <strong>Description:</strong>
-  <%= @betty.description %>
-</p>
-
-<% if @betty.user == current_user %>
-	<%= link_to 'Edit', edit_betty_path(@betty) %> |
-<% end %>
 <%= link_to 'Back', betties_path %>
+
+<div class="row">
+	<div class="col-md-offset-2 col-md-8">
+		<div class="panel panel-default">
+		<div class="panel-heading center">
+			<%= image_tag @betty.image.url(:medium) %>
+		</div>
+		<div class="panel body">
+			<p><%= @betty.description %></p>
+			<p><strong><%= @betty.user.email if @betty.user %></strong></p>
+
+		<% if @betty.user == current_user %>
+		<%= link_to 'Edit', edit_betty_path(@betty) %>
+		<% end %>
+		</div>
+	</div>
+</div>
+
