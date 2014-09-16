@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :betties
 
   devise_for :users
-  root "pages#home"
+  root "betties#index"
   get "about" => "pages#about" #creates about_path
 
   # The priority is based upon order of creation: first created -> highest priority.

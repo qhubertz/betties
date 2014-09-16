@@ -1,17 +1,24 @@
 <%= link_to 'Back', betties_path %>
 
 <div class="row">
-	<div class="col-md-offset-2 col-md-8">
+	<div class="col-md-offset-2 col-md-6">
 		<div class="panel panel-default">
 		<div class="panel-heading center">
 			<%= image_tag @betty.image.url(:medium) %>
 		</div>
-		<div class="panel body">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+			<strong><%= @betty.user.email if @betty.user %></strong>
+			</h4>
+		</div>
+		<div class="panel-body">
 			<p><%= @betty.description %></p>
-			<p><strong><%= @betty.user.email if @betty.user %></strong></p>
+			<p></p>
 
 		<% if @betty.user == current_user %>
-		<%= link_to 'Edit', edit_betty_path(@betty) %>
+			<%= link_to edit_betty_path(@betty) do %>
+              <span class="glyphicon glyphicon-pencil"></span> edit
+            <% end %>
 		<% end %>
 		</div>
 	</div>
