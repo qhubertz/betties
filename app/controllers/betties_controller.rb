@@ -4,7 +4,7 @@ class BettiesController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @betties = Betty.all
+    @betties = Betty.all.order("created_at DESC")
   end
 
   def show
