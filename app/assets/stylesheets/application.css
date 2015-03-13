@@ -14,3 +14,12 @@
  *= require 'masonry/transitions'
  *= require_self
  */
+
+body {
+  
+  background: url('..images/brick.JPG');
+  /* Full Page Background Receipe */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
